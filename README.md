@@ -7,8 +7,7 @@
 ## Assignments:
 * [General Assignment Info](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=645)
 * [Source Lang Definitions](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=646)
-
-[### A1](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=390)
+* [A1 info](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=390)
   
 
 
