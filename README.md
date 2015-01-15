@@ -7,6 +7,7 @@
 ## GitHub:
 * [Git tutorial](http://rogerdudler.github.io/git-guide/)
 * [Git cheatshet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+* [GitHub notes](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) - this tells you how to add structure to git README.md
 
 ## Assignments:
 * [General Assignment Info](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=645)
