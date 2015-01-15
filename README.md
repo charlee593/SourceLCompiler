@@ -4,6 +4,10 @@
 * [Course Info Sheet](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=644)
 * [Lectures](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=389)
 
+## GitHub:
+* [Git tutorial](http://rogerdudler.github.io/git-guide/)
+* [Git cheatshet](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)
+
 ## Assignments:
 * [General Assignment Info](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=645)
 * [Source Lang Definitions](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=646)
