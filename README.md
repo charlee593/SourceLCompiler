@@ -3,6 +3,8 @@
 * [Bulletin Board](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=388) 
 * [Course Info Sheet](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=644)
 * [Lectures](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=389)
+* [Lecture notes Carlos](https://docs.google.com/folderview?id=0B2GH2h0Jm7xZT2hiYlNfLWItSzg&usp=docslist_api)
+* [TextBook](https://drive.google.com/file/d/0B5r0iTwYE37PMmtMeF9mNlFadE4xQl9ibDRuWHY0WkF4OEZn/view?usp=sharing)
 
 ## GitHub:
 * [Git tutorial](http://rogerdudler.github.io/git-guide/)

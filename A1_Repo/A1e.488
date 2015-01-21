@@ -1,0 +1,150 @@
+% Author: Adrian Banks
+
+% The recursion test file. Implements and calls six different function and
+% parameter cases. The implementations of the different cases are contrived,
+% but work well enough to test compiler functionality.
+%
+% The six cases are:
+%   RECURSIVE FUNCTION WITH PARAMETERS
+%   RECURSIVE FUNCTION WITHOUT PARAMETERS
+%   RECURSIVE PROCEDURE WITH PARAMETERS
+%   RECURSIVE PROCEDURE WITHOUT PARAMETERS
+%   NESTED FUNCTION
+%   NESTED PROCEDURE
+begin
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% factorial %%
+	% Description:
+	%   Calculates the factorial of a number.
+	%
+	%   RECURSIVE FUNCTION WITH PARAMETERS
+	%
+	% Arguments:
+	%   n - Number to take factorial of; must be non-negative.
+	%
+	% Returns:
+	%   The factorial of the input, or -1 if an error occurred.
+	integer function factorial(integer n)
+	begin		
+		if (n < 0)
+		then
+			% Error case. Cannot take the factorial of a negative number.
+			return (-1)
+		end
+		if (n > 0)
+		then
+			% Normal recursion case; compute the factorial.
+			return (n * factorial(n - 1))
+		end
+		
+		% Otherwise, n == 0, so we're at our base case.
+		return (1)
+	end
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% subtract %%
+	% Description:
+	%   Subtracts 10 from a number
+	%
+	% Arguments:
+	%   n - Number to subtract 10 from.
+	%
+	% Returns:
+	%   The input, minus 10.
+	integer function subtract(integer n)
+	begin
+		integer subtractionCount  % Number of subtractions done
+		subtractionCount <= 0
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% subtract_ %%
+		% Description:
+		%   Recursively subtracts 1 from the stored number, until 10 has been
+		%   subtracted.
+		%
+		%   RECURSIVE FUNCTION WITHOUT PARAMETERS
+		%   NESTED FUNCTION
+		%
+		% Returns:
+		%   Returns n - ( 10 - subtractionCount)
+		integer function subtract_
+		begin
+			if (subtractionCount < 10)
+			then
+			begin
+				% Less than 10 subtractions.
+				n <= (n - 1)
+				% Increment subtraction count.
+				subtractionCount <= (subtractionCount + 1)
+				return (subtract_)
+			end
+			else
+			begin
+				% We've subtracted 10 already, return the new n.
+				return (n)
+			end
+			end
+		end
+		
+		return (subtract_)
+	end
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% countdown %%
+	% Description:
+	%   Prints a countdown from the given number to 0.
+	%
+	%   RECURSIVE PROCEDURE WITH PARAMETERS
+	%
+	% Arguments:
+	%   n - Number to count down from; must be positive.
+	procedure printSequence(integer n)
+	begin
+		if (n <= 0)
+		then
+			% Can't countdown from a negative number, or we're done counting.
+			return
+		end
+		
+		put n
+		printSequence(n - 1)
+		return  % TODO: Is this necessary?
+	end
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% countup %%
+	% Description:
+	%   Counts up to 10.
+	procedure printSequence
+	begin
+		% Initialize the countup counter.
+		integer counter
+		counter <= 0
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% countup_ %%
+		% Description:
+		%   Counts up to 10.
+		%
+		%   RECURSIVE PROCEDURE WITHOUT PARAMETERS
+		%   NESTED PROCEDURE
+		procedure printSequence
+		begin
+			if (counter > 10)
+			then
+				% Done counting.
+				return
+			end
+			
+			% Keep counting up.
+			put counter
+			counter <= (counter + 1)
+			countup_
+			return  % TODO: Is this necessary?
+		end
+		
+		% Do the countup.
+		countup_
+		return  % TODO: Is this necessary?
+	end
+	
+	% Test everything.
+	put factorial(5)
+	put subtract(-7)
+	countdown(7)
+	countup
+end
