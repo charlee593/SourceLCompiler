@@ -14,15 +14,15 @@ begin
 	z <= x / y
 	
 	boolean a, b, c
-	boolean a <= true
-	boolean b <= false
+	a <= true
+	b <= false
 	
 	%not
 	c <= !a
 	%or
 	c <= a | b
 	%and
-	c <= a & b
+	c < =a & 			b
 	%eq
 	c <= x = y
 	%neq
@@ -41,13 +41,4 @@ begin
 	% {statement 'yields' expression}, function call, 
 	% parameter names in expressions?
 	% procedures
-
-	
-
-
-
-
-
-
-
 end
