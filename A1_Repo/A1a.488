@@ -14,15 +14,15 @@ begin
 	z <= x / y
 	
 	boolean a, b, c
-	boolean a <= true
-	boolean b <= false
+	a <= true
+	b <= false
 	
 	%not
 	c <= !a
 	%or
 	c <= a | b
 	%and
-	c <= a & b
+	c < =a & 			b
 	%eq
 	c <= x = y
 	%neq
@@ -38,16 +38,9 @@ begin
 	%xor
 	c <= (a & !b) | (!a & b)
 
-	% {statement 'yields' expression}, function call, 
-	% parameter names in expressions?
-	% procedures
-
-	
-
-
-
-
-
-
-
+	put {
+	  integer g
+	  g <= 2
+	  yields 
+	  g}
 end
