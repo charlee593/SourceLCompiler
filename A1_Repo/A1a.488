@@ -1,3 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author(s): David Rihak (g3rihakd)
+% Oleksandr Mogilevskyi (g3alex)
+%
+% The program below uses all operators in a single scope.
+% The purpose of this program is to create the simplest 
+% test cases possible. It also covers a simple yield case.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
 	% declate all variables 1st
 	integer x, y, z
