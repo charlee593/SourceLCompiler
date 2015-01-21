@@ -1,0 +1,23 @@
+Responsibilities:
+Oleksandr Mogilevskyi (g3alex) - A1b, A1a
+Carlos Lee (g3carlos) - A1c, A1d
+David Rihak (g3rihakd) - A1a, A1b
+Saman Samikemani (g3sami) - A1d, A1c
+Adrian Banks (c1banksa) - A1e
+
+To make sure the code is correct we made sure
+that every program was corrected by a teammember 
+that didn't write that particular program.
+
+A1a uses all arithmetic, logical and comparison operators. 
+It also uses a simple anonymus parameterless function.
+A1b uses arrays including all forms of array declaration, 
+positive and negative bounds. 
+A1c uses all forms of loop building and loop exit constructs
+demonstrated multiple ways.
+A1d uses non-recursive functions and procedures with and 
+without parameters. It also demonstrates how spacing can
+be applied in the Source Language.
+A1e  uses recursive functions and procedures with and 
+without parameters including nested procedures  
+and nested function declarations.
