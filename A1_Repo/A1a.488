@@ -9,48 +9,49 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
-	% declate all variables 1st
-	integer x, y, z
-	x <= 20
-	y <= 10
-	
-	%sum
-	z <= x + y
-	% negative value of x
-	z <= -x
-	%mul
-	z <= x * y
-	%div
-	z <= x / y
-	
-	boolean a, b, c
-	a <= true
-	b <= false
-	
-	%not
-	c <= !a
-	%or
-	c <= a | b
-	%and
-	c < =a & b
-	%eq
-	c <= x = y
-	%neq
-	c <= x != y
-	%lt
-	c <= x < y
-	%leq
-	c <= x <= y
-	%gt
-	c <= x > y
-	%geq
-	c <= x >= y
-	%xor
-	c <= (a & !b) | (!a & b)
+    
+    % declate all variables 1st
+    integer x, y, z
+    x <= 20
+    y <= 10
+    
+    %sum
+    z <= x + y
+    % negative value of x
+    z <= -x
+    %mul
+    z <= x * y
+    %div
+    z <= x / y
+    
+    boolean a, b, c
+    a <= true
+    b <= false
+    
+    %not
+    c <= !a
+    %or
+    c <= a | b
+    %and
+    c < =a & b
+    %eq
+    c <= x = y
+    %neq
+    c <= x != y
+    %lt
+    c <= x < y
+    %leq
+    c <= x <= y
+    %gt
+    c <= x > y
+    %geq
+    c <= x >= y
+    %xor
+    c <= (a & !b) | (!a & b)
 
-	put {
-	  integer g
-	  g <= 2
-	  yields 
-	  g}
+    put {
+    integer g
+    g <= 2
+    yields 
+    g}
 end
