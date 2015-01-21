@@ -1,12 +1,12 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Author(s): Oleksandr Mogilevskyi (g3alex)
-% David Rihak (g3rihakd)
+%            David Rihak (g3rihakd)
 %
-% This program defines 1-d and 2-d arrays. 
-% It performs several operations on each of them. 
+% This program defines 1D and 2D arrays. 
+% Then in initializes some of them.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % start of main program
 begin
