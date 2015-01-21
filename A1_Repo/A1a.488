@@ -38,7 +38,9 @@ begin
 	%xor
 	c <= (a & !b) | (!a & b)
 
-	% {statement 'yields' expression}, function call, 
-	% parameter names in expressions?
-	% procedures
+	put {
+	  integer g
+	  g <= 2
+	  yields 
+	  g}
 end
