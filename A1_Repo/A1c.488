@@ -1,7 +1,13 @@
-% start of main program
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author(s): Carlos Lee (CDF login: g3carlos)
+%			 Saman Samikemani (CDF login: g3sami)
+%
+% A program using all forms of loop building and loop exit constructs. 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
-
-    % assignment
+    % Declare and assignment
 	integer x
 	x<=1
 
