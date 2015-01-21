@@ -1,73 +1,42 @@
 begin
 	% declate all variables 1st
-	integer a, b, c
-
-	% declare all functions 2nd
-	% integer function name(integer x, integer y)
-
-	integer function sum(integer x, integer y) begin
-		return (x + y)
-	end
-
-	integer function minus(integer x) begin 
-		return (-x)
-	end
-
-	integer function sub(integer x, integer y) begin
-		return (x - y)
-	end
-
-	integer function mul(integer x, integer y) begin
-		return (x * y)
-	end
-
-	integer function div(integer x, integer y) begin
-		return(x / y)
-	end
-
-	boolean function not(boolean x) begin
-		return (!x)
-	end
-
-	boolean function and(boolean x, boolean y) begin
-		return (x & y)
-	end
-
-	boolean function or(boolean x, boolean y) begin
-		return (x | y)
-	end	
-
-	boolean function eq(boolean x, boolean y) begin
-		return (x = y)
-	end	
-
-	boolean function neq(boolean x, boolean y) begin
-		return (x != y)
-	end
-
-	boolean function and(boolean x, boolean y) begin
-		return (x & y)
-	end
-
-	boolean function lt(boolean x, boolean y) begin
-		return (x < y)
-	end
-
-	boolean function lte(boolean x, boolean y) begin
-		return (x <= y)
-	end
-
-	boolean function gt(boolean x, boolean y) begin
-		return (x > y)
-	end
-
-	boolean function gte(boolean x, boolean y) begin
-		return (x >= y)
-	end
-
-	boolean function xor(boolean x, boolean y) begin
-		return ((x & !y) | (!x & y))
-	end
+	integer x, y, z
+	x <= 20
+	y <= 10
+	
+	%sum
+	z <= x + y
+	% negative value of x
+	z <= -x
+	%mul
+	z <= x * y
+	%div
+	z <= x / y
+	
+	boolean a, b, c
+	boolean a <= true
+	boolean b <= false
+	
+	%not
+	c <= !a
+	%or
+	c <= a | b
+	%and
+	c <= a & b
+	%eq
+	c <= x = y
+	%neq
+	c <= x != y
+	%lt
+	c <= x < y
+	%leq
+	c <= x <= y
+	%gt
+	c <= x > y
+	%geq
+	c <= x >= y
+	%xor
+	c <= (a & !b) | (!a & b)
 
 	% {statement 'yields' expression}, function call, 
 	% parameter names in expressions?
@@ -76,12 +45,7 @@ begin
 	
 
 
-	% examples here
-	a <= 20
-	b <= 10
 
-	% c = 30
-	c <= sum(a, b)
 
 
 
