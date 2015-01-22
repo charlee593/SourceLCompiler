@@ -1,17 +1,31 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Author(s): Saman Samikemani (CDF login: g3sami)
-%            Carlos Lee (CDF login: g3carlos)
+% Author(s): Saman Samikemani (g3sami)
+%            Carlos Lee (g3carlos)
 %
-% A program using non-recursive functions and procedures with and without parameters
+% A program using non-recursive functions and procedures
+% with and without parameters.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 begin
+
+    % Description:
+    %   This function takes no parameters. It sipmly prints
+    %   a message and returns true.
+    %
+    % Returns:
+    %   true
+    boolean function toBeOrNotToBe
+    begin
+        put "You have just call the To be, or not to be function!!!"
+
+        return (true)
+    end
+
     % Description:
     %     Calculates the gcd(greatest common divisor) of two integers.
     %     This is a non-recursive function with parameters.
-    %     The inappropriate coding style is intentional and is meant to test how robust
-    %     the compiler is.
     %
     % Arguments:
     %     a and b - The numbers for which gcd is to be calculated
@@ -19,17 +33,27 @@ begin
     % Returns:
     %     gcd(a, b)
     integer function gcd(integer a, integer b)
-    begin if a< 0 
-        then a < = - a end
-        if 
-        0>b
-        then b<= -b end
-        if a =0 &! b then return (0)
+    begin
+        if a < 0 then
+            a <= -a
         end
-        while b do integer c c <= a-b*(a/ b) a < = b b <   =c end
-        begin
-            return (a)
+
+        if 0 > b then
+            b <= -b
         end
+
+        if (a = 0) & (b = 0) then
+            return (0)
+        end
+
+        while (b > 0) do
+            integer c
+            c <= a - (b * (a/b))
+            a <= b
+            b <= c
+        end
+
+        return (a)
     end
     
     % Description:
@@ -46,12 +70,14 @@ begin
         b <= 1
         while n > 2 do
             integer c
-            c <= a+b
+            c <= a + b
             a <= b
             b <= c
-            n <= n-1
+            n <= n - 1
         end
         put b, skip
+
+        return
     end
     
     % Description:
@@ -63,31 +89,23 @@ begin
         integer n, i
         i <= 1
         get n
-        while i <= n do
+        while (i <= n) do
             put "Hello World!", skip
-            i <= i+1
+            i <= i + 1
         end
-    end    
-    
-    % Description:
-    %     Caclulates the sum of 1 to n
-    %     n is received from standard input using get
-    %     This is a non-recursive function without parameter.
-    % Returns:
-    %     Sum of 1 to n
-    procedure calc_sum
-    begin
-        integer i, n, s
-        get n
-        i <= 1
-        s <= 0
-        while i <= n do
-            s <= s + i
-        end
-        return (s)
+
+        return
     end
 
-    say_hello 
-    put gcd(12, 16), skip, calc_sum, skip
+    % calling everything from above
+
+    boolean truth
+    truth <= toBeOrNotToBe
+
+    put gcd(12, 16), skip 
+    
     print_fib
+
+    say_hello
+
 end
