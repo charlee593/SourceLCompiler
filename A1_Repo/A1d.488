@@ -1,11 +1,11 @@
-% Author: Saman Samikermani
-
-% This program implements the following four cases in the source language:
-%   - A non-recursive function without parameters
-%   - A non-recursive function with parameters
-%   - A non-recursive procedure without parameters
-%   - A non-recursive procedure with parameters
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author(s): Saman Samikemani (CDF login: g3sami)
+%			 Carlos Lee (CDF login: g3carlos)
+%
+% A program using non-recursive functions and procedures with and without parameters
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
 	% Description:
 	%   Calculates the gcd(greatest common divisor) of two integers.
