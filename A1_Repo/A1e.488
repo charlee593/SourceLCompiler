@@ -12,33 +12,32 @@
 %   NESTED FUNCTION
 %   NESTED PROCEDURE
 begin
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% factorial %%
-	% Description:
-	%   Calculates the factorial of a number.
-	%
-	%   RECURSIVE FUNCTION WITH PARAMETERS
-	%
-	% Arguments:
-	%   n - Number to take factorial of; must be non-negative.
-	%
-	% Returns:
-	%   The factorial of the input, or -1 if an error occurred.
-	integer function factorial(integer n)
-	begin		
-		if (n < 0)
-		then
-			% Error case. Cannot take the factorial of a negative number.
-			return (-1)
-		end
-		if (n > 0)
-		then
-			% Normal recursion case; compute the factorial.
-			return (n * factorial(n - 1))
-		end
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% factorial %%
+    % Description:
+    %   Calculates the factorial of a number.
+    %
+    %   RECURSIVE FUNCTION WITH PARAMETERS
+    %
+    % Arguments:
+    %   n - Number to take factorial of; must be non-negative.
+    %
+    % Returns:
+    %   The factorial of the input, or -1 if an error occurred.
+    integer function factorial(integer n)
+    begin		
+        if (n < 0) then
+            % Error case. Cannot take the factorial of a negative number.
+            return (-1)
+        end
+        if (n > 0)
+        then
+            % Normal recursion case; compute the factorial.
+            return (n * factorial(n - 1))
+        end
 		
-		% Otherwise, n == 0, so we're at our base case.
-		return (1)
-	end
+        % Otherwise, n == 0, so we're at our base case.
+        return (1)
+    end
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% subtract %%
 	% Description:
