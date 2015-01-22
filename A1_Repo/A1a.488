@@ -18,10 +18,13 @@ begin
 
     % sum
     z <= x + y
+    z <= x + (y + z)
     % negative value of x
     z <= -x
+    z <= ---x
     % mul
     z <= x * y
+    z <= (x * y) * z
     % div
     z <= x / y
     
@@ -31,8 +34,10 @@ begin
     
     % not
     c <= !a
+    c <= !!a
     % or
     c <= a | b
+    c <= (a | b) | c 
     % and
     c <= a & b
     % eq
