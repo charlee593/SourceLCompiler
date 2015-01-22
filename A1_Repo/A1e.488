@@ -94,7 +94,7 @@ begin
 	%
 	% Arguments:
 	%   n - Number to count down from; must be positive.
-	procedure printSequence(integer n)
+	procedure countdown(integer n)
 	begin
 		if (n <= 0)
 		then
@@ -103,7 +103,7 @@ begin
 		end
 		
 		put n
-		printSequence(n - 1)
+		countdown(n - 1)
 		return  % TODO: Is this necessary?
 	end
 	
