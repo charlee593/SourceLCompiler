@@ -1,23 +1,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Author(s): Saman Samikemani (g3sami)
-%			 Carlos Lee (g3carlos)
+% Author(s): Saman Samikemani (CDF login: g3sami)
+%            Carlos Lee (CDF login: g3carlos)
 %
-% A program using non-recursive functions and procedures with and without parameters.
+% A program using non-recursive functions and procedures with and without parameters
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
     % Description:
-    %   Calculates the gcd(greatest common divisor) of two integers.
-    %   This is a non-recursive function with parameters.
-    %   This function is meant to test how the compiler handles white spaces.
-    %   Please do not follow the style!!!
+    %     Calculates the gcd(greatest common divisor) of two integers.
+    %     This is a non-recursive function with parameters.
+    %     The inappropriate coding style is intentional and is meant to test how robust
+    %     the compiler is.
     %
     % Arguments:
-    %   a and b - The numbers for which gcd is to be calculated
+    %     a and b - The numbers for which gcd is to be calculated
     %
     % Returns:
-    %   gcd(a, b)
+    %     gcd(a, b)
     integer function gcd(integer a, integer b)
     begin if a< 0 
         then a < = - a end
@@ -31,4 +31,61 @@ begin
             return (a)
         end
     end
+    
+    % Description:
+    %     Prints the nth Fibonacci number.
+    %     Assuming that Fibonacci series starts with 1,1,2,...
+    %     This is a non-recursive procedure with parameter.
+    %
+    % Arguments:
+    %     n - The index of the Fibonacci number to be printed
+    procedure print_fib(integer n)
+    begin
+        integer a, b
+        a <= 1
+        b <= 1
+        while n > 2 do
+            integer c
+            c <= a+b
+            a <= b
+            b <= c
+            n <= n-1
+        end
+        put b, skip
+    end
+    
+    % Description:
+    %     Prints "Hello World!" n times.
+    %     n is received from standard input using get
+    %     This is a non-recursive procedure without parameter.
+    procedure say_hello
+    begin
+        integer n, i
+        i <= 1
+        get n
+        while i <= n do
+            put "Hello World!", skip
+            i <= i+1
+        end
+    end    
+    
+    % Description:
+    %     Caclulates the sum of 1 to n
+    %     n is received from standard input using get
+    %     This is a non-recursive function without parameter.
+    procedure calc_sum
+    begin
+        integer i, n, s
+        get n
+        i <= 1
+        s <= 0
+        while i <= n do
+            s <= s + i
+        end
+        return (s)
+    end
+
+    say_hello 
+    put gcd(12, 16), skip, calc_sum, skip
+    print_fib
 end
