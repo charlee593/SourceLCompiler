@@ -1,58 +1,58 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Author(s): Carlos Lee (CDF login: g3carlos)
-%			 Saman Samikemani (CDF login: g3sami)
+% Author(s): Carlos Lee (g3carlos)
+%			 Saman Samikemani (g3sami)
 %
 % A program using all forms of loop building and loop exit constructs. 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 begin
-    % Declare and assignment
-	integer x
-	x<=1
+    % declare and assign
+    integer x
+    x<=1
 
-	% conditional loop to increment x
-	while x < 10 do 
-		x <= x + 1
-	end
+    % conditional loop to increment x
+    while x < 10 do 
+        x <= x + 1
+    end
 
-	% conditional loop with exit from containing loop
-	while x > 1 do 
-	    exit
-	end
+    % conditional loop with exit from containing loop
+    while x > 1 do 
+        exit
+    end
 
-	% conditional loop with exit from containing loop 
-	% when expression is true
-	while x >= 1 do 
-	    exit when (x = 10)
-	end
+    % conditional loop with exit from containing loop 
+    % when expression is true
+    while x >= 1 do 
+        exit when (x = 10)
+    end
 
-	% nested conditional loop with exit from containing loop
-	while x > 1 do
-	    while 1 < x do
-	    	exit
-		end
-		x <= x - 1 
-	end
+    % nested conditional loop with exit from containing loop
+    while x > 1 do
+        while 1 < x do
+            exit
+        end
+        x <= x - 1 
+    end
 
-	% nested conditional loop with exit from containing loop
-	% when expression is true
-	while 1 > x do
-	    loop
-	    	x <= x + 1
-	    	exit when (x = 10)
-		end
-	end
+    % nested conditional loop with exit from containing loop
+    % when expression is true
+    while 1 >= x do
+        loop
+            x <= x + 1
+            exit when (x = 10)
+        end
+    end
 
-	% infinite loop with exit from containing loop
-	loop
-		exit 
-	end
+    % infinite loop with exit from containing loop
+    loop
+        exit 
+    end
 
-
-	% infinite loop with exit from containing loop 
-	% when expression is true
-	loop
-		exit when (x = 1)
-	end
+    % infinite loop with exit from containing loop 
+    % when expression is true
+    loop
+        exit when (x = 10)
+    end
 end
