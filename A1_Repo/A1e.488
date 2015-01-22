@@ -1,5 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Author: Adrian Banks
-
+%
 % The recursion test file. Implements and calls six different function and
 % parameter cases. The implementations of the different cases are contrived,
 % but work well enough to test compiler functionality.
@@ -11,6 +13,9 @@
 %   RECURSIVE PROCEDURE WITHOUT PARAMETERS
 %   NESTED FUNCTION
 %   NESTED PROCEDURE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 begin
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% factorial %%
     % Description:
@@ -29,8 +34,8 @@ begin
             % Error case. Cannot take the factorial of a negative number.
             return (-1)
         end
-        if (n > 0)
-        then
+        
+        if (n > 0) then
             % Normal recursion case; compute the factorial.
             return (n * factorial(n - 1))
         end
@@ -50,7 +55,8 @@ begin
     %   The input, minus 10.
     integer function subtract(integer n)
     begin
-        integer subtractionCount  % Number of subtractions done
+        % Number of subtractions done
+        integer subtractionCount
         subtractionCount <= 0
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% subtract_ %%
@@ -65,8 +71,7 @@ begin
         %   Returns n - ( 10 - subtractionCount)
         integer function subtract_
         begin
-            if (subtractionCount < 10)
-            then
+            if (subtractionCount < 10) then
             begin
                 % Less than 10 subtractions.
                 n <= (n - 1)
@@ -95,15 +100,14 @@ begin
     %   n - Number to count down from; must be positive.
     procedure countdown(integer n)
     begin
-        if (n <= 0)
-        then
+        if (n <= 0) then
             % Can't countdown from a negative number, or we're done counting.
             return
         end
 
         put n
         countdown(n - 1)
-        return  % TODO: Is this necessary?
+        return
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% countup %%
@@ -123,8 +127,7 @@ begin
         %   NESTED PROCEDURE
         procedure countup_
         begin
-            if (counter > 10)
-            then
+            if (counter > 10) then
                 % Done counting.
                 return
             end
@@ -133,12 +136,12 @@ begin
             put counter
             counter <= (counter + 1)
             countup_
-            return  % TODO: Is this necessary?
+            return
         end
 
         % Do the countup.
         countup_
-        return  % TODO: Is this necessary?
+        return
     end
 
     % Test everything.
