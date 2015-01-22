@@ -73,6 +73,8 @@ begin
     %     Caclulates the sum of 1 to n
     %     n is received from standard input using get
     %     This is a non-recursive function without parameter.
+    % Returns:
+    %     Sum of 1 to n
     procedure calc_sum
     begin
         integer i, n, s
