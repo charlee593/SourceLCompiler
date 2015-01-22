@@ -1,34 +1,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Author(s): Saman Samikemani (CDF login: g3sami)
-%			 Carlos Lee (CDF login: g3carlos)
+% Author(s): Saman Samikemani (g3sami)
+%			 Carlos Lee (g3carlos)
 %
-% A program using non-recursive functions and procedures with and without parameters
+% A program using non-recursive functions and procedures with and without parameters.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 begin
-	% Description:
-	%   Calculates the gcd(greatest common divisor) of two integers.
-	%   This is a non-recursive function with parameters.
-	%   This function is meant to test how the compiler handles white spaces.
-	%   Please do not follow the style!!!
-	%
-	% Arguments:
-	%   a and b - The numbers for which gcd is to be calculated
-	%
-	% Returns:
-	%   gcd(a, b)
-	integer function gcd(integer a, integer b)
-	begin if a< 0 
-		then a < = - a end
-		if 
-		0>b
-		then b<= -b end
-		if a =0 &! b then return (0)
-		end
-		while b do integer c c <= a-b*(a/ b) a < = b b <   =c end
-		begin
-			return (a)
-		end
-	end
+    % Description:
+    %   Calculates the gcd(greatest common divisor) of two integers.
+    %   This is a non-recursive function with parameters.
+    %   This function is meant to test how the compiler handles white spaces.
+    %   Please do not follow the style!!!
+    %
+    % Arguments:
+    %   a and b - The numbers for which gcd is to be calculated
+    %
+    % Returns:
+    %   gcd(a, b)
+    integer function gcd(integer a, integer b)
+    begin if a< 0 
+        then a < = - a end
+        if 
+        0>b
+        then b<= -b end
+        if a =0 &! b then return (0)
+        end
+        while b do integer c c <= a-b*(a/ b) a < = b b <   =c end
+        begin
+            return (a)
+        end
+    end
 end
