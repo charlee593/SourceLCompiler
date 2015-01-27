@@ -1,0 +1,6 @@
+begin
+integer function hi(boolean b)
+begin
+return (5)
+end
+end

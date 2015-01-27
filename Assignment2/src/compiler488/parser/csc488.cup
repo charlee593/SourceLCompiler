@@ -108,7 +108,13 @@ terminal String  TEXTCONST	;
 // Non-terminals that have no value.
 // nonterminal xxx
 
-nonterminal   program  ;
+nonterminal   program, statement, variablenames;
+nonterminal   bound, generalBound, scope, output;
+nonterminal   input, type, arguments, parameters;
+nonterminal   variable, expression, variablename;
+nonterminal   arrayname, functionname, procedurename;
+nonterminal   parametername, statements, outputs;
+nonterminal   integer, parameter;
 
 /**********************************************************
 
@@ -137,7 +143,7 @@ start with program;
  * reads one more token before it will act on the production.
  */
 
-program  ::=   ;		// the main program
+program ::= scope;		// the main program
 
 /*****************************************************************************
 
@@ -146,4 +152,80 @@ program  ::=   ;		// the main program
     GOES HERE
 
 ****************************************************************************/
+
+
+statement ::= variable LESS EQUAL expression
+            | IF expression THEN statements END
+            | IF expression THEN statements ELSE statements END
+            | WHILE expression DO statements END
+            | LOOP statements END
+            | EXIT
+            | EXIT WHEN expression
+            | RETURN L_PAREN expression R_PAREN
+            | RETURN 
+            | PUT outputs
+            | GET input
+            | procedurename
+            | procedurename L_PAREN arguments R_PAREN
+            | scope
+            | type variablenames
+            | type FUNCTION functionname scope
+            | type FUNCTION functionname L_PAREN parameters R_PAREN scope
+            | PROCEDURE procedurename scope 
+            | PROCEDURE procedurename L_PAREN parameters R_PAREN scope;
+
+statements ::= statement
+             | statements statement;
+
+variablenames ::= variablename
+                | variablename L_SQUARE bound R_SQUARE
+                | variablename L_SQUARE bound COMMA bound R_SQUARE
+                | variablenames COMMA variablename;
+
+bound ::= integer
+        | generalBound DOT DOT generalBound;
+
+generalBound ::= integer
+               | MINUS integer;
+
+scope ::= BEGIN statements END
+        | BEGIN END;
+
+output ::= expression
+//         | text
+         | SKIP;
+
+outputs ::= output 
+          | outputs COMMA output;
+
+input ::= variable
+        | input COMMA variable;
+
+type ::= INTEGER | BOOLEAN;
+
+arguments ::= expression
+            | arguments COMMA expression;
+
+parameter ::= type parametername;
+
+parameters ::= parameter
+             | parameters COMMA parameter ;
+
+variable ::= variablename
+           | arrayname L_SQUARE expression R_SQUARE
+           | arrayname L_SQUARE expression COMMA expression R_SQUARE;
+
+expression ::= integer;
+
+integer ::= INTCONST;
+
+variablename ::= IDENT;
+
+arrayname ::= IDENT;
+
+functionname ::= IDENT;
+
+procedurename ::= IDENT;
+
+parametername ::= IDENT;
 
