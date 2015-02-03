@@ -43,7 +43,7 @@ To run the test driver first build a distribution using 'ant dist',
 then run using 'java -jar dist/compiler488.jar  inputFile'
 A shell script  RUNCOMPILER.sh  that does this has been provided.
 
-===================================================================================================
+=======================================================================================
 
 Marking Scheme for Assignment 2
 
@@ -71,7 +71,9 @@ Marking Scheme for Assignment 2
   Our testing of a compiler built using each teams  csc488.cup file
   Did the compiler build successfully?
   Does it pass all of our tests?
-  
+
+=======================================================================================
+
   What to submit / How to submit Assignment 2
 
 1) Submit  tar ball named  csc488h.A2.XY.tar  (where XY is your team number).
