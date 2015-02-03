@@ -2,7 +2,7 @@
 
 package compiler488.parser;
 
-import java_cup.runtime.*;		// Must always import this.
+import java_cup.runtime.*;    // Must always import this.
 
 /* User code components 1: action code components.
  * Code to be used inside the actions triggered when productions are matched.
@@ -17,8 +17,8 @@ import java_cup.runtime.*;		// Must always import this.
  */
 parser code {:
 
-	String lastError;
-	
+  String lastError;
+  
     /** Override the report_error method so it will display the line and
      * column of where the error occurred in the input as well as the
      * reason for the error which is passed into the method in the
@@ -27,38 +27,38 @@ parser code {:
      * @param info     symbol containing line/column numbers
      */
     public void report_error(String message, Object info)
-	{
-	String st =  "Error";
+  {
+  String st =  "Error";
    
         if (info instanceof java_cup.runtime.Symbol)
-	    {
+      {
             java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
 
-	    /* s.left is supposed to hold the line number of the error.
-	     * s.right is supposed to hold the column number.
+      /* s.left is supposed to hold the line number of the error.
+       * s.right is supposed to hold the column number.
              * If either is < 0 the parser may have run off the end of the program
              * and a Syntax Error message without line number may be printed.
-	     */
+       */
    
-            if (s.left >= 0)				// Check line number.
-		{
+            if (s.left >= 0)        // Check line number.
+    {
                 st += " in line " + (s.left + 1);
-                if (s.right >= 0)			// Check column number.
+                if (s.right >= 0)     // Check column number.
                     st += ", column " + (s.right + 1);
-		}
+    }
             else
                st += " at end of input " ;
            }
-	    st += ": " + message;
+      st += ": " + message;
         System.err.println (st);
         lastError = st;
-	}
+  }
    
     /** Override the report_fatal_error method to use the report_error method. */
     public void report_fatal_error (String message, Object info) 
-	{
+  {
         report_error (message, info);
-	}
+  }
    
 :};
 
@@ -89,34 +89,35 @@ init with {:
 // DEFINITIONS for CSC488S Source Language  Winter  2009/2010 
 
 // Terminals returned by the scanner with no value attached.  
-terminal	AND,	OR,	NOT,	TRUE,	FALSE	;
-terminal 	BOOLEAN,INTEGER,FUNCTION,PROCEDURE	;
-terminal	BEGIN,	DO,	ELSE,	END,	EXIT	;
-terminal	IF,	RETURN,	LOOP,	PUT,	GET	;
-terminal	THEN,	WHILE,	SKIP,	YIELDS, WHEN	;
+terminal  AND,  OR, NOT,  TRUE, FALSE ;
+terminal  BOOLEAN,INTEGER,FUNCTION,PROCEDURE  ;
+terminal  BEGIN,  DO, ELSE, END,  EXIT  ;
+terminal  IF, RETURN, LOOP, PUT,  GET ;
+terminal  THEN, WHILE,  SKIP, YIELDS, WHEN  ;
 
 // Special-character terminals, no value attached
-terminal	L_PAREN	,R_PAREN,L_SQUARE, R_SQUARE, L_CURLEY, R_CURLEY	;
-terminal	EQUAL,	GREATER,LESS,	COMMA,  DOT	;
-terminal	PLUS,	MINUS,	TIMES,  DIVIDE	;
+terminal  L_PAREN ,R_PAREN,L_SQUARE, R_SQUARE, L_CURLEY, R_CURLEY ;
+terminal  EQUAL,  GREATER,LESS, COMMA,  DOT ;
+terminal  PLUS, MINUS,  TIMES,  DIVIDE  ;
 
 // Terminals returned by the scanner with a value.
-terminal String  IDENT	;
-terminal Integer INTCONST	;
-terminal String  TEXTCONST	;
+terminal String  IDENT  ;
+terminal Integer INTCONST ;
+terminal String  TEXTCONST  ;
 
 // Non-terminals that have no value.
 // nonterminal xxx
 
-nonterminal   program, statement, variablenames;
-nonterminal   bound, generalBound, scope, output;
-nonterminal   input, type, arguments, parameters;
-nonterminal   variable, expression, variablename;
-nonterminal   functionname, procedurename;
-nonterminal   parametername, statements, outputs;
-nonterminal   integer, parameter;
-nonterminal   L0exp, L1exp, L2exp, L3exp, L4exp;
-nonterminal   L5exp, L6exp, term;
+nonterminal   program, scope;
+nonterminal   bound, generalBound;
+nonterminal   variable, integer, type, expression;
+nonterminal   functionname, procedurename, parametername;
+nonterminal   atom, L0exp, L1exp, L2exp, L3exp, L4exp, L5exp, L6exp;
+nonterminal   statement, statement_list;
+nonterminal   output, output_list, input_list;
+nonterminal   var_declr, var_declr_list;
+nonterminal   parameter, parameter_list;
+nonterminal   argument_list;
 
 /**********************************************************
 
@@ -132,7 +133,7 @@ The nonterminals from your grammar go here
 // commented.
 //
 //precedence left PLUS, MINUS;
-//precedence left TIMES, DIVIDE;		// Higher precedence.
+//precedence left TIMES, DIVIDE;    // Higher precedence.
 
 // The grammar section.
 
@@ -145,7 +146,7 @@ start with program;
  * reads one more token before it will act on the production.
  */
 
-program ::= scope;		// the main program
+program     ::=     scope;    // the main program
 
 /*****************************************************************************
 
@@ -155,102 +156,134 @@ program ::= scope;		// the main program
 
 ****************************************************************************/
 
+// A single statement
 
-statement ::= variable LESS EQUAL expression
-            | IF expression THEN statements END
-            | IF expression THEN statements ELSE statements END
-            | WHILE expression DO statements END
-            | LOOP statements END
-            | EXIT
-            | EXIT WHEN expression
-            | RETURN L_PAREN expression R_PAREN
-            | RETURN 
-            | PUT outputs
-            | GET input
-            | procedurename
-            | procedurename L_PAREN arguments R_PAREN
-            | scope
-            | type variablenames
-            | type FUNCTION functionname scope
-            | type FUNCTION functionname L_PAREN parameters R_PAREN scope
-            | PROCEDURE procedurename scope 
-            | PROCEDURE procedurename L_PAREN parameters R_PAREN scope;
+statement       ::=     variable LESS EQUAL expression                                  // Assignment
+                |       IF expression THEN statement_list END                           // If statement without Else
+                |       IF expression THEN statement_list ELSE statement_list END       // If statement with Else
+                |       WHILE expression DO statement_list END                          // While loop
+                |       LOOP statement_list END                                         // Infinite loop
+                |       EXIT                                                            // Exit from loop
+                |       EXIT WHEN expression                                            // Conditional exit from loop
+                |       RETURN L_PAREN expression R_PAREN                               // Return from a function
+                |       RETURN                                                          // Return from a procedure
+                |       PUT output_list                                                 // Print to standard output
+                |       GET input_list                                                  // Read from standard input
+                |       procedurename                                                   // Procedure call
+                |       procedurename L_PAREN argument_list R_PAREN                     // Function call
+                |       scope                                                           // Nested scope
+                |       type var_declr_list                                             // Variable declaration
+                |       type FUNCTION functionname scope                                // Function declaration without parameters
+                |       type FUNCTION functionname L_PAREN parameter_list R_PAREN scope // Function declaration with parameters
+                |       PROCEDURE procedurename scope                                   // Procedure declaration without parameters
+                |       PROCEDURE procedurename L_PAREN parameter_list R_PAREN scope;   // Procedure declaration with parameters
 
-statements ::= statement
-             | statements statement;
+// List of whitespace-separated statements
 
-variablename ::= IDENT
-               | IDENT L_SQUARE bound R_SQUARE
-               | IDENT L_SQUARE bound COMMA bound R_SQUARE;
+statement_list  ::=     statement
+                |       statement_list statement;
 
-variablenames ::= variablenames COMMA variablename
-							  | variablename;
+// Variable declaration
 
-bound ::= integer
-        | generalBound DOT DOT generalBound;
+var_declr       ::=     IDENT                                                           // Scalar variable declaration
+                |       IDENT L_SQUARE bound R_SQUARE                                   // One-dimensional array declaration
+                |       IDENT L_SQUARE bound COMMA bound R_SQUARE;                      // Two-dimensional array declaration
 
-generalBound ::= integer
-               | MINUS integer;
+// List of comma-separated variable declarations
 
-scope ::= BEGIN statements END
-        | BEGIN END;
+var_declr_list  ::=     var_declr_list COMMA var_declr                               
+                |       var_declr;
 
-output ::= expression
-         | TEXTCONST
-         | SKIP;
+variable        ::=     IDENT                                                           // Access to scalar variable
+                |       IDENT L_SQUARE expression R_SQUARE                              // Access to an element in a one-dimensional array
+                |       IDENT L_SQUARE expression COMMA expression R_SQUARE;            // Access to an element in a two-dimensional array
 
-outputs ::= output 
-          | outputs COMMA output;
+bound           ::=     integer
+                |       generalBound DOT DOT generalBound;
 
-input ::= variable
-        | input COMMA variable;
+generalBound    ::=     integer
+                |       MINUS integer;
 
-type ::= INTEGER | BOOLEAN;
+scope           ::=     BEGIN statement_list END
+                |       BEGIN END;
 
-arguments ::= expression
-            | arguments COMMA expression;
+output          ::=     expression
+                |       TEXTCONST
+                |       SKIP;
 
-parameter ::= type parametername;
+output_list     ::=     output 
+                |       output_list COMMA output;
 
-parameters ::= parameter
-             | parameters COMMA parameter ;
+input_list      ::=     variable
+                |       input_list COMMA variable;
 
-variable ::= IDENT
-           | IDENT L_SQUARE expression R_SQUARE
-           | IDENT L_SQUARE expression COMMA expression R_SQUARE;
+type            ::=     INTEGER 
+                |       BOOLEAN;
 
-expression ::= L6exp
-						 | L_CURLEY statements YIELDS expression R_CURLEY;
+argument_list   ::=     expression
+                |       argument_list COMMA expression;
 
-term ::= IDENT | IDENT L_PAREN arguments R_PAREN
-			 | INTCONST | TRUE | FALSE
-			 | L_PAREN L6exp R_PAREN;
+parameter       ::=     type parametername;
 
-L0exp ::= term | MINUS L0exp;
+parameter_list  ::=     parameter
+                |       parameter_list COMMA parameter;
 
-L1exp ::= L0exp | L1exp TIMES L0exp | L1exp DIVIDE L0exp;
+expression      ::=     L6exp
+                |       L_CURLEY statement_list YIELDS expression R_CURLEY;
 
-L2exp ::= L1exp | L2exp PLUS L1exp | L2exp MINUS L1exp;
+atom            ::=     IDENT                                                           // Variable name or procedure call
+                |       IDENT L_PAREN argument_list R_PAREN                             // Function call
+                |       INTCONST
+                |       TRUE 
+                |       FALSE
+                |       L_PAREN L6exp R_PAREN;                                          // Any expression enclosed in parentheses
+    
+// Expressions made by level 0 operators (unary minus)
 
-L3exp ::= L2exp EQUAL L2exp
-        | L2exp NOT EQUAL L2exp
-        | L2exp LESS L2exp
-        | L2exp LESS EQUAL L2exp
-        | L2exp GREATER L2exp
-        | L2exp GREATER EQUAL L2exp
-				| L2exp;
+L0exp           ::=     atom 
+                |       MINUS L0exp;
 
-L4exp ::= L3exp | NOT L4exp;
+// Expressions made by level 1 operators (multiplication and division)            
 
-L5exp ::= L4exp | L5exp AND L4exp;
+L1exp           ::=     L0exp
+                |       L1exp TIMES L0exp 
+                |       L1exp DIVIDE L0exp;
 
-L6exp ::= L5exp | L6exp OR L5exp;
+// Expressions made by level 2 operators (addition and subtraction)
 
-integer ::= INTCONST;
+L2exp           ::=     L1exp
+                |       L2exp PLUS L1exp 
+                |       L2exp MINUS L1exp;
 
-functionname ::= IDENT;
+// Expressions made by level 3 operators (comparison)
 
-procedurename ::= IDENT;
+L3exp           ::=     L2exp EQUAL L2exp
+                |       L2exp NOT EQUAL L2exp
+                |       L2exp LESS L2exp
+                |       L2exp LESS EQUAL L2exp
+                |       L2exp GREATER L2exp
+                |       L2exp GREATER EQUAL L2exp
+                |       L2exp;
 
-parametername ::= IDENT;
+// Expressions made by level 4 operators (negations)            
 
+L4exp           ::=     L3exp 
+                |       NOT L4exp;
+
+// Expressions made by level 5 operators (conjunction)
+
+L5exp           ::=     L4exp 
+                |       L5exp AND L4exp;
+
+// Expressions made by level 6 operators (disjunction)            
+
+L6exp           ::=     L5exp 
+                |       L6exp OR L5exp;
+
+integer         ::=    INTCONST;
+
+functionname    ::=    IDENT;
+
+procedurename   ::=    IDENT;
+
+parametername   ::=    IDENT;
