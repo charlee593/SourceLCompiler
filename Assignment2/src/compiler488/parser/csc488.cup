@@ -112,9 +112,11 @@ nonterminal   program, statement, variablenames;
 nonterminal   bound, generalBound, scope, output;
 nonterminal   input, type, arguments, parameters;
 nonterminal   variable, expression, variablename;
-nonterminal   arrayname, functionname, procedurename;
+nonterminal   functionname, procedurename;
 nonterminal   parametername, statements, outputs;
 nonterminal   integer, parameter;
+nonterminal   L0exp, L1exp, L2exp, L3exp, L4exp;
+nonterminal   L5exp, L6exp, term;
 
 /**********************************************************
 
@@ -177,10 +179,12 @@ statement ::= variable LESS EQUAL expression
 statements ::= statement
              | statements statement;
 
-variablenames ::= variablename
-                | variablename L_SQUARE bound R_SQUARE
-                | variablename L_SQUARE bound COMMA bound R_SQUARE
-                | variablenames COMMA variablename;
+variablename ::= IDENT
+               | IDENT L_SQUARE bound R_SQUARE
+               | IDENT L_SQUARE bound COMMA bound R_SQUARE;
+
+variablenames ::= variablenames COMMA variablename
+							  | variablename;
 
 bound ::= integer
         | generalBound DOT DOT generalBound;
@@ -192,7 +196,7 @@ scope ::= BEGIN statements END
         | BEGIN END;
 
 output ::= expression
-//         | text
+         | TEXTCONST
          | SKIP;
 
 outputs ::= output 
@@ -211,17 +215,38 @@ parameter ::= type parametername;
 parameters ::= parameter
              | parameters COMMA parameter ;
 
-variable ::= variablename
-           | arrayname L_SQUARE expression R_SQUARE
-           | arrayname L_SQUARE expression COMMA expression R_SQUARE;
+variable ::= IDENT
+           | IDENT L_SQUARE expression R_SQUARE
+           | IDENT L_SQUARE expression COMMA expression R_SQUARE;
 
-expression ::= integer;
+expression ::= L6exp
+						 | L_CURLEY statements YIELDS expression R_CURLEY;
+
+term ::= IDENT | IDENT L_PAREN arguments R_PAREN
+			 | INTCONST | TRUE | FALSE
+			 | L_PAREN L6exp R_PAREN;
+
+L0exp ::= term | MINUS L0exp;
+
+L1exp ::= L0exp | L1exp TIMES L0exp | L1exp DIVIDE L0exp;
+
+L2exp ::= L1exp | L2exp PLUS L1exp | L2exp MINUS L1exp;
+
+L3exp ::= L2exp EQUAL L2exp
+        | L2exp NOT EQUAL L2exp
+        | L2exp LESS L2exp
+        | L2exp LESS EQUAL L2exp
+        | L2exp GREATER L2exp
+        | L2exp GREATER EQUAL L2exp
+				| L2exp;
+
+L4exp ::= L3exp | NOT L4exp;
+
+L5exp ::= L4exp | L5exp AND L4exp;
+
+L6exp ::= L5exp | L6exp OR L5exp;
 
 integer ::= INTCONST;
-
-variablename ::= IDENT;
-
-arrayname ::= IDENT;
 
 functionname ::= IDENT;
 
