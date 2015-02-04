@@ -146,7 +146,7 @@ start with program;
  * reads one more token before it will act on the production.
  */
 
-program     ::=     scope;    // the main program
+program         ::=     scope;    // the main program
 
 /*****************************************************************************
 
@@ -228,15 +228,13 @@ parameter       ::=     type parametername;
 parameter_list  ::=     parameter
                 |       parameter_list COMMA parameter;
 
-expression      ::=     L6exp
-                |       L_CURLEY statement_list YIELDS expression R_CURLEY;
-
 atom            ::=     IDENT                                                           // Variable name or procedure call
                 |       IDENT L_PAREN argument_list R_PAREN                             // Function call
                 |       INTCONST
                 |       TRUE 
                 |       FALSE
-                |       L_PAREN L6exp R_PAREN;                                          // Any expression enclosed in parentheses
+                |       L_PAREN L6exp R_PAREN                                           // Any expression enclosed in parentheses
+                |       L_CURLEY statement_list YIELDS expression R_CURLEY;             // Yields expression   
     
 // Expressions made by level 0 operators (unary minus)
 
@@ -265,7 +263,7 @@ L3exp           ::=     L2exp EQUAL L2exp
                 |       L2exp GREATER EQUAL L2exp
                 |       L2exp;
 
-// Expressions made by level 4 operators (negations)            
+// Expressions made by level 4 operators (negation)            
 
 L4exp           ::=     L3exp 
                 |       NOT L4exp;
@@ -280,10 +278,12 @@ L5exp           ::=     L4exp
 L6exp           ::=     L5exp 
                 |       L6exp OR L5exp;
 
-integer         ::=    INTCONST;
+expression      ::=     L6exp
 
-functionname    ::=    IDENT;
+integer         ::=     INTCONST;
 
-procedurename   ::=    IDENT;
+functionname    ::=     IDENT;
 
-parametername   ::=    IDENT;
+procedurename   ::=     IDENT;
+
+parametername   ::=     IDENT;
