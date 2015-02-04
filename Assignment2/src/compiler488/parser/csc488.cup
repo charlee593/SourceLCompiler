@@ -278,7 +278,7 @@ L5exp           ::=     L4exp
 L6exp           ::=     L5exp 
                 |       L6exp OR L5exp;
 
-expression      ::=     L6exp
+expression      ::=     L6exp;
 
 integer         ::=     INTCONST;
 
