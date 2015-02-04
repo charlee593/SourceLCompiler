@@ -236,24 +236,26 @@ atom            ::=     IDENT                                                   
                 |       L_PAREN L6exp R_PAREN                                           // Any expression enclosed in parentheses
                 |       L_CURLEY statement_list YIELDS expression R_CURLEY;             // Yields expression   
     
-// Expressions made by level 0 operators (unary minus)
+// According to language description, operators are layered into 7 different levels based on their precedence.
+    
+// Expressions created using up to level 0 operators (unary minus)
 
 L0exp           ::=     atom 
                 |       MINUS L0exp;
 
-// Expressions made by level 1 operators (multiplication and division)            
+// Expressions created using up to level 1 operators (multiplication and division)            
 
 L1exp           ::=     L0exp
                 |       L1exp TIMES L0exp 
                 |       L1exp DIVIDE L0exp;
 
-// Expressions made by level 2 operators (addition and subtraction)
+// Expressions created using up to level 2 operators (addition and subtraction)
 
 L2exp           ::=     L1exp
                 |       L2exp PLUS L1exp 
                 |       L2exp MINUS L1exp;
 
-// Expressions made by level 3 operators (comparison)
+// Expressions created using up to level 3 operators (comparison)
 
 L3exp           ::=     L2exp EQUAL L2exp
                 |       L2exp NOT EQUAL L2exp
@@ -263,17 +265,17 @@ L3exp           ::=     L2exp EQUAL L2exp
                 |       L2exp GREATER EQUAL L2exp
                 |       L2exp;
 
-// Expressions made by level 4 operators (negation)            
+// Expressions created using up to level 4 operators (negation)            
 
 L4exp           ::=     L3exp 
                 |       NOT L4exp;
 
-// Expressions made by level 5 operators (conjunction)
+// Expressions created using up to level 5 operators (conjunction)
 
 L5exp           ::=     L4exp 
                 |       L5exp AND L4exp;
 
-// Expressions made by level 6 operators (disjunction)            
+// Expressions created using up to level 6 operators (disjunction)            
 
 L6exp           ::=     L5exp 
                 |       L6exp OR L5exp;
