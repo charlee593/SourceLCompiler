@@ -61,4 +61,6 @@ begin
     yields 
     g}
 
+    a <= ({exit yields 2})+3
+    a <= {exit yields 2}+3
 end
