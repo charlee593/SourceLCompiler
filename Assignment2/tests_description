@@ -1,32 +1,36 @@
-In the the passing directory there are the following files: 
+In the passing directory there are the following files: 
 A1a.488  A1b.488  A1c.488  A1d.488  A1e.488  empty_scope.488  expressions.488  nested.488
 
 For the passing tests we used our A1 test cases as basic guidelines:
 
-A1a.488 uses all arithmetic, logical and comparison operators. 
+-A1a.488 uses all arithmetic, logical and comparison operators. 
 It also uses a simple anonymus parameterless function.
-A1b.488 uses arrays including all forms of array declaration, 
+
+-A1b.488 uses arrays including all forms of array declaration, 
 positive and negative bounds. 
-A1c.488 uses all forms of loop building and loop exit constructs
+
+-A1c.488 uses all forms of loop building and loop exit constructs
 demonstrated multiple ways.
-A1d.488 uses non-recursive functions and procedures with and 
+
+-A1d.488 uses non-recursive functions and procedures with and 
 without parameters. It also demonstrates how spacing can
 be applied in the Source Language.
-A1e.488  uses recursive functions and procedures with and 
+
+-A1e.488  uses recursive functions and procedures with and 
 without parameters including nested procedures  
 and nested function declarations.
 
-empty_scope.488 tests whether an empty_scope would be accepted on its own. This was the base case.
+-empty_scope.488 tests whether an empty_scope would be accepted on its own. This was the base case.
 
-Furthermore we created more pasing tests to test more complex programs
+Furthermore we created more passing tests to test more complex programs
 which were expected to be valid:
 
-expression.488 tests more complex expressions. It tests mainly for more intricate parenthesis, however
+-expression.488 tests more complex expressions. It tests mainly for more intricate parenthesis, however
 it also tests some important valid corner cases.
 
-nested.488 is complex program that constains nested loops, neste if statements, nested function declaration and
+-nested.488 is complex program that contains nested loops, nested if statements, nested function declaration and
 nested scopes. All of which are syntactically correct.
 
 
-For the failing tests we decided to have 
+In the failing directory there are the following files: 
 
