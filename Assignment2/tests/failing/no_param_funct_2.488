@@ -1,0 +1,9 @@
+begin
+	boolean function toBeOrNotToBe
+    begin
+        return (true)
+    end
+    
+    x <= toBeOrNotToBe(put x)
+    
+end

@@ -1,0 +1,4 @@
+begin
+	integer hell[1..2]
+	hell[1..2] <= 1
+end

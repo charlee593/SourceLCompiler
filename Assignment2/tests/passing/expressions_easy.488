@@ -1,3 +1,9 @@
+%
+%
+% This file contains passing tests to more complex expression.
+% It mainly tests correction of paranthesizing and logical operands.
+%
+
 begin
 
     integer x, y, z
@@ -8,7 +14,7 @@ begin
     z <= 1 + 2 
     z <= 1 + 2 + 3
     z <= 1 + 2 + 3 + 4 + 5 + 6 + 7
-     z <= (1 + 2)
+    z <= (1 + 2)
     z <= (1 + 2) + 3
     z <= 1 + (2 + 3)
     z <= (1 + 2 + 3)
@@ -39,5 +45,23 @@ begin
     z <= x - (y - x)
     z <= x - x - x - x
     z <= (x - (x - y))
+    
+    c <= !a
+    c <= !!a
+    c <= c = (((!!a)))
+    z <= -(--x)
+    z <= x < ((z < z))
+    c <= c !        
+		= a
+    
+    c <= a & c & b
+    z <= (x - ((x) - (x))) & True
+    c<= !a=b
+    
+    x <= { x <= 1 - 2
+      x <= x
+      yields 
+      x < x
+    }
     
 end

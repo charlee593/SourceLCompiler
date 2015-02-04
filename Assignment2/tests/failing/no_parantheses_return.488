@@ -1,0 +1,6 @@
+begin
+	integer function hello
+	begin
+		return 1
+	end
+end

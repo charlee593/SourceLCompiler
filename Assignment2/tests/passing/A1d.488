@@ -103,8 +103,9 @@ begin
     truth <= toBeOrNotToBe
 
     put gcd(12, 16), skip 
+    x <= gcd(12, 16)
     
-    print_fib
+    print_fib(2)
 
     say_hello
 
