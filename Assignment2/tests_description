@@ -1,162 +1,180 @@
-************************************************************** Passing tests **
+******************************* Passing tests *********************************
+
 For the passing tests we used our A1 test cases as basic guidelines:
 
 A1a.488
-	Uses all arithmetic, logical and comparison	operators. It also uses a
-	simple anonymus parameterless function.
+    Uses all arithmetic, logical and comparison	operators. It also uses a
+    simple anonymus parameterless function.
 
 A1b.488
-	Uses arrays including all forms of array declaration, including positive
-	and negative bounds. 
+    Uses arrays including all forms of array declaration, including positive
+    and negative bounds. 
 
 A1c.488
-	Uses all forms of loop building and loop exit constructs demonstrated
-	multiple ways.
+    Uses all forms of loop building and loop exit constructs demonstrated
+    multiple ways.
 
 A1d.488
-	Uses non-recursive functions and procedures with and without parameters.
-	It also demonstrates how spacing can applied in the Source Language.
+    Uses non-recursive functions and procedures with and without parameters.
+    It also demonstrates how spacing can applied in the Source Language.
 
 A1e.488
-	Uses recursive functions and procedures with and without parameters
-	including nested procedures nested function declarations.
+    Uses recursive functions and procedures with and without parameters
+    including nested procedures nested function declarations.
 
 empty_scope.488
-	Tests whether an empty_scope would be accepted on its own. This was the
-	base case.
+    Tests whether an empty_scope would be accepted on its own. This was the
+    base case.
 
 
 Furthermore we created more passing tests to test more complex programs
 which were expected to be valid:
 
+complex_arithmetic.488
+    More complex arithmetic operations than in A1a.488 including multiple
+    negations, multiplication and division series, bracketing and uneven
+    spacing.
+
+user_input.488
+    This program tests the user's input by storing the entered values
+    in variables. Then for confirmation prints the values on the screen.
+
+undeclared.488
+    This program uses undeclared variables which is syntatically correct.
+
+declarations.488
+    This program uses different ways of declaring variables (integer and
+    boolean, single variable and multiple, different array format, mix of
+    arrays and non-arrays).
+
 expression.488
-	Tests more complex expressions. It tests mainly for more parenthesis,
-	however also tests some important corner cases.
+    Tests more complex expressions. It tests mainly for more parenthesis,
+    however also tests some important corner cases.
 
 nested.488
-	Is a complex program that contains nested loops, nested if statements,
-	nested function declaration and scopes, all of which are syntactically
-	correct.
+    Is a complex program that contains nested loops, nested if statements,
+    nested function declaration and scopes, all of which are syntactically
+    correct.
 
 no_indentation.488
-	Tests a simple, correct program which only uses spaces for delimiting
-	(i.e. no indentation).
+    Tests a simple, correct program which only uses spaces for delimiting
+    (i.e. no indentation).
 
 
-************************************************************** Failing tests **
+******************************** Failing tests ********************************
+
 In the failing directory there are the following files:
 
 add.488 
-	Missing an expression in between addition expression.
+    Missing an expression in between addition expression.
 
 alpha_array_bound.488
-	Array bound is an alpha character.
+    Array bound is an alpha character.
 
 array_assignment.488
-	Arrayname missing expression.
+    Arrayname missing expression.
 
 array_param.488
-	Passing an array parameter to a function statement.
+    Passing an array parameter to a function statement.
 
 direct_assignment.488
-	Missing declaration. 
+    Missing declaration. 
 
 empty_brackets.488
-	Between the parentheses, it misses an arguments.
+    Between the parentheses, it misses an arguments.
 
 empty_if.488
-	Missing an expression in the in statement.
+    Missing an expression in the in statement.
 
 empty_param_funct.488
-	Function has empty param list.
+    Function has empty param list.
 
 empty_param_proc.488
-	Procedure has empty param list.
+    Procedure has empty param list.
 
 freestanding_put.488
-	Put without output.
+    Put without output.
 
 freestanding_text.488
-	Text without a put statement.
+    Text without a put statement.
 
 exit_1.488
-	Missing an expression in the exit conditional statement.
+    Missing an expression in the exit conditional statement.
 
 invalid_get_usage.488
-	Input uses illegal variable input.
+    Input uses illegal variable input.
 
 invalid_negation.488
-	Negation ! has lower precedence than the comparison expression.
+    Negation ! has lower precedence than the comparison expression.
 
 invalid_statement.488
-	Lack statement in scope.
+    Lack statement in scope.
 
 invalid_yields.488
-	Yields expression lack a statement.
+    Yields expression lack a statement.
 
 keyword_variable.488
-	Using keyword as variable. 
+    Using keyword as variable. 
 
 missing_array_bound_1.488
-	Array is missing bounds within brackets.
+    Array is missing bounds within brackets.
 
 missing_array_bound_2.488
-	Array is missing upper bound.
+    Array is missing upper bound.
 
 missing_array_bound_3.488
-	Array is missing lower bound.
+    Array is missing lower bound.
 
 missing_begin.488
-	Scope is missing 'begin'.
+    Scope is missing 'begin'.
 
 missing_end.488
-	Scope is missing 'end'.
+    Scope is missing 'end'.
 
 negative_array_bound.488
-	The bound can only be non-negative integer inside the variable name. 
+    The bound can only be non-negative integer inside the variable name. 
 
 no_do_whileloop.488
-	While statement lack the 'do' keyword.
+    While statement lack the 'do' keyword.
 
 no_param_funct_1.488
-	Assignment of the function has to be either just functionname or
-	functionname(arguments).
+    Assignment of the function has to be either just functionname or
+    functionname(arguments).
 
 no_param_funct_2.488
-	Assignment of the function has expression instead of arguments.
+    Assignment of the function has expression instead of arguments.
 
 no_parantheses_return.488
-	Expression return has to be either just return or return with parenthesis
-	enclosing expression.
+    Expression return has to be either just return or return with parenthesis
+    enclosing expression.
 
 no_type_function.488
-	Function is missing a return type.
+    Function is missing a return type.
 
 threeway_comparison.488
-	Valid if it has parenthesis to one of the comparison expression.
+    Valid if it has parenthesis to one of the comparison expression.
 
 type_procedure.488
-	Procedure has a return type.
+    Procedure has a return type.
 
 unmatched_array_bracket_1.488
-	Array size declaration has an unmatched left square bracket.
+    Array size declaration has an unmatched left square bracket.
 
 unmatched_array_bracket_2.488
-	Array size declaration has an unmatched right square bracket.
+    Array size declaration has an unmatched right square bracket.
 
 unmatched_quote.488
-	Unmatched quotation around text.
+    Unmatched quotation around text.
 NOTE: DUE TO THE WAY THE .FLEX FILE HANDLES QUOTES, THIS TEST WILL SUCCEED. THE END OF LINE
       MARKERS ARE TREATED THE SAME AS QUOTATION MARKS. AS WE CANNOT CHANGE THE .FLEX FILE,
       WE CANNOT FIX THIS ISSUE. IT IS INCLUDED AS A REMINDER TO GET THE .FLEX FILE CHANGED
       AS SOON AS POSSIBLE.
  
 variable_declaration_1.488
-	The declaration lack a variable name in between the commas. 
+    The declaration lack a variable name in between the commas. 
 
 variable_declaration_2.488
-	Identifier cannot start with a number.
+    Identifier cannot start with a number.
 
 variable_declaration_3.488
-	Identifier cannot start with a symbol.
-
+    Identifier cannot start with a symbol.
