@@ -1,0 +1,6 @@
+begin
+	integer function
+	begin
+		return x
+	end
+end

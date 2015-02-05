@@ -1,0 +1,6 @@
+begin
+	integer function emptyParams ()
+	begin
+		return x
+	end
+end

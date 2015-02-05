@@ -1,0 +1,1 @@
+begin integer function add3 (integer x) begin return (x + 3) end integer x x <= add3(x) end
