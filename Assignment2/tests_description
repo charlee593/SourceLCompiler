@@ -33,4 +33,49 @@ nested scopes. All of which are syntactically correct.
 
 
 In the failing directory there are the following files: 
+add.488 
+Tests illegal expression, missing an expression in between addition expression.
+
+array_assignment.488
+Tests illegal statement, arrayname missing expression.
+
+array_param.488
+Tests illegal statement, passing an array parameter to a function statement.
+
+direct_assignment.488
+Tests illegal statement, missing declaration. 
+
+empty_brackets.488
+Tests illegal expression, between the parentheses, it misses an arguments.
+
+empty_if.488
+Tests illegal statement, missing an expression in the in statement.
+
+exit_1.488
+Tests illegal statement, missing an expression in the exit conditional statement.
+
+invalid_get_usage.488
+Tests illegal statement, input uses illegal variable input.
+
+invalid_negation.488
+Tests illegal expression, negation ! has lower precedence than the comparison expression.
+
+invalid_statement.488
+Tests illegal statement, lack statement in scope.
+
+invalid_yields.488
+Tests illegal expression,
+
+keyword_variable.488
+missing_begin.488
+negative_array_bound.488
+no_do_whileloop.488
+no_do_whileloop.488~
+no_param_funct_1.488
+no_param_funct_2.488
+no_parantheses_return.488
+threeway_comparison.488
+variable_declaration_1.488
+variable_declaration_2.488
+
 
