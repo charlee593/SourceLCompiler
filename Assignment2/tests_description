@@ -64,18 +64,36 @@ invalid_statement.488
 Tests illegal statement, lack statement in scope.
 
 invalid_yields.488
-Tests illegal expression,
+Tests illegal expression, yields expression lack a statement.
 
 keyword_variable.488
+Tests illegal statement, using keyword as variable. 
+
 missing_begin.488
+Tests illegal expression, missing begin for the scope.
+
 negative_array_bound.488
+Tests illegal statement, the bound can only be non-negative integer inside the variable name. 
+
 no_do_whileloop.488
-no_do_whileloop.488~
+Tests illegal statement, while statement lack the keyword ‘do’.
+
 no_param_funct_1.488
+Tests illegal expression, assignment of the function has to be either just the functionname or the functionname(arguments).
+
 no_param_funct_2.488
+Tests illegal expression, assignment of the function has expression instead of arguments.
+
 no_parantheses_return.488
+Tests illegal expression, expression return has to be either just return or return with parenthesis enclosing expression.
+
 threeway_comparison.488
+Tests illegal expression, is valid if it has parenthesis to one of the comparison expression.
+ 
 variable_declaration_1.488
+Tests illegal statement, the declaration lack a variable name in between the commas. 
+
 variable_declaration_2.488
 
+Tests illegal expression, identifier cannot start with number.
 
