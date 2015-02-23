@@ -4,9 +4,54 @@ package compiler488.parser;
 
 import java_cup.runtime.*;		// Must always import this.
 
-import compiler488.ast.SourceLocImpl;
+import compiler488.ast.ASTList;
 
+import compiler488.ast.Printable;
+import compiler488.ast.Readable;
+
+import compiler488.ast.stmt.AssignStmt;
 import compiler488.ast.stmt.Program;
+import compiler488.ast.stmt.Scope;
+import compiler488.ast.stmt.ExitStmt;
+import compiler488.ast.stmt.GetStmt;
+import compiler488.ast.stmt.IfStmt;
+import compiler488.ast.stmt.LoopStmt;
+import compiler488.ast.stmt.LoopingStmt;
+import compiler488.ast.stmt.ProcedureCallStmt;
+import compiler488.ast.stmt.PutStmt;
+import compiler488.ast.stmt.Stmt;
+import compiler488.ast.stmt.WhileDoStmt;
+
+import compiler488.ast.decl.ArrayDeclPart;
+import compiler488.ast.decl.Declaration;
+import compiler488.ast.decl.DeclarationPart;
+import compiler488.ast.decl.MultiDeclarations;
+import compiler488.ast.decl.RoutineDecl;
+import compiler488.ast.decl.ScalarDecl;
+import compiler488.ast.decl.ScalarDeclPart;
+
+import compiler488.ast.expn.AnonFuncExpn;
+import compiler488.ast.expn.ArithExpn;
+import compiler488.ast.expn.BinaryExpn;
+import compiler488.ast.expn.BoolConstExpn;
+import compiler488.ast.expn.BoolExpn;
+import compiler488.ast.expn.CompareExpn;
+import compiler488.ast.expn.ConstExpn;
+import compiler488.ast.expn.EqualsExpn;
+import compiler488.ast.expn.Expn;
+import compiler488.ast.expn.FunctionCallExpn;
+import compiler488.ast.expn.IdentExpn;
+import compiler488.ast.expn.IntConstExpn;
+import compiler488.ast.expn.NotExpn;
+import compiler488.ast.expn.SkipConstExpn;
+import compiler488.ast.expn.SubsExpn;
+import compiler488.ast.expn.TextConstExpn;
+import compiler488.ast.expn.UnaryExpn;
+import compiler488.ast.expn.UnaryMinusExpn;
+
+import compiler488.ast.type.BooleanType;
+import compiler488.ast.type.IntegerType;
+import compiler488.ast.type.Type;
 
 /* User code components 1: action code components.
  * Code to be used inside the actions triggered when productions are matched.
@@ -111,18 +156,6 @@ terminal String  IDENT	;
 terminal Integer INTCONST	;
 terminal String  TEXTCONST	;
 
-// Non-terminals that have no value.
-// nonterminal xxx
-
-nonterminal	program,statement,	declaration,	scope	;
-nonterminal	variablenames,		output			;
-nonterminal	type,  	arguments,	parameters,	variable	;
-nonterminal 	expression,	variablename 			;
-
-nonterminal	declarationsAndStatements , inputs, outputs, bound , generalBound ;
-nonterminal	procedureCall, parameter, conjunction, negation, compareExpn ;
-nonterminal	arithExpn, term, factor, primary, constant ;
-
 // Non-terminals that have a value.
 // nonterminal type  nameList ;
 
@@ -136,6 +169,37 @@ nonterminal	arithExpn, term, factor, primary, constant ;
 // The grammar section.
 
 // This specifies the initial symbol of the grammar.
+
+nonterminal Program program;
+nonterminal Scope scope;
+nonterminal Stmt statement;
+nonterminal Declaration declaration;
+nonterminal MultiDeclarations variablenames;
+nonterminal Printable output;
+nonterminal Type type;
+nonterminal ASTList<Expn> arguments;
+nonterminal ScalarDecl parameters;
+nonterminal ScalarDeclPart variable;
+nonterminal Expn expression;
+nonterminal DeclarationPart variablename;
+nonterminal ASTList<Stmt> declarationsAndStatements;
+nonterminal ASTList<Readable> inputs;
+nonterminal ASTList<Printable> outputs;
+//########################################
+nonterminal bound;
+//######################################## 
+nonterminal generalBound; 
+nonterminal FunctionCallExpn procedureCall;
+nonterminal ScalarDecl parameter;
+nonterminal Expn conjunction;
+nonterminal UnaryMinusExpn negation;
+nonterminal CompareExpn compareExpn;
+nonterminal ArithExpn arithExpn;
+nonterminal ArithExpn term;
+nonterminal ArithExpn factor;
+nonterminal Expn primary;
+nonterminal ConstExpn constant;
+
 start with program;
 
 /* Notice that sometimes the action must be inside the production rule,
@@ -145,17 +209,23 @@ start with program;
  */
 
 program		::=	scope:scope 
-				{: RESULT = new Program(scope, new SourceLocImpl("hey", scope)); :};				// the main program
+			{: RESULT = new Program(scope); :};		// the main program
 
-scope		::=	BEGIN declarationsAndStatements END  	// non empty scope
+scope		::=	BEGIN declarationsAndStatements:stmts END  	// non empty scope
+			{: RESULT = new Scope(stmts); :}///////////////////////////////////////////////
 		|	BEGIN END				// empty scope
+			{: RESULT = new Scope(); :}
 		;
 
 //  sequence of arbitrarily intermixed declarations and statements
-declarationsAndStatements	::=	statement 
-				|	declaration
-				|	declarationsAndStatements statement
-				|	declarationsAndStatements declaration
+declarationsAndStatements	::=	statement:stmt
+					{: RESULT = new ASTList<Stmt>(stmt); :}
+				|	declaration:decl
+					{: RESULT = new ASTList<Stmt>(decl); :}
+				|	declarationsAndStatements:head statement:stmt
+					{: head.addLast(stmt); RESULT = head; :}
+				|	declarationsAndStatements:head declaration:decl
+					{: head.addLast(decl); RESULT = head; :}
 				;
 
 statement	::=	variable LESS EQUAL expression				// assignment statement
