@@ -1,0 +1,15 @@
+begin
+
+    max <= 100
+    pass <= 50
+    min <= 0
+
+    if mark <= max & mark >= pass then
+        put "You passed."
+    end
+
+    if mark >= min & mark <= pass then
+        put "You failed."
+    end
+
+end

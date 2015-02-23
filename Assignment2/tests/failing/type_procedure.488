@@ -1,0 +1,6 @@
+begin
+	integer procedure withKeyword
+	begin
+		return x
+	end
+end

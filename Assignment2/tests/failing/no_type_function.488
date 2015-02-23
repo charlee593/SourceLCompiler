@@ -1,0 +1,5 @@
+begin
+	function noKeyword
+	begin
+	end
+end

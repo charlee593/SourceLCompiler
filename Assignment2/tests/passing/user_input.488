@@ -1,0 +1,17 @@
+begin
+
+    integer lucky, age, height
+
+    put "Please input your lucky digit form 1 to 10: "
+    get lucky
+    put skip
+
+    put "Please input your age and height in cm: "
+    get age, height
+    put skip
+
+    put "Your lucky digit is ", lucky, skip, skip
+    put "Your are" , age, " years old.", skip, skip
+    put "And your are ", height, "cm tall."
+
+end
