@@ -16,5 +16,6 @@
 * [Source Lang Definitions](https://csc.cdf.toronto.edu/mybb/attachment.php?aid=646)
 * [A1 info](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=390) and [A1 repo](https://github.com/charlee593/SourceLCompiler/tree/master/A1_Repo)
   
-
-
+## Last year project:
+* [General Assignment Info](https://csc.cdf.toronto.edu/mybb/forumdisplay.php?fid=150)
+* [TA project](https://github.com/d-b/CSC488)
